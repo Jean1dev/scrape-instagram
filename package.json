@@ -1,0 +1,25 @@
+{
+  "name": "scrape-instagram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jean1dev/scrape-instagram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jean1dev/scrape-instagram/issues"
+  },
+  "homepage": "https://github.com/Jean1dev/scrape-instagram#readme",
+  "dependencies": {
+    "igdm": "^1.3.4",
+    "instagram-private-api": "^1.45.1",
+    "instagram-scraping": "^1.0.16",
+    "scraper-instagram": "^1.0.17"
+  }
+}
