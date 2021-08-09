@@ -9,7 +9,8 @@ auth.login()
     console.log(`Logged in as ${currentUser.username}`)
 
     const dm = new DirectMessaging(client)
-    dm.init()
+    //dm.init()
+    dm.sendDm('jeanlucafp')
   })
   .catch(err => {
     console.error(err)

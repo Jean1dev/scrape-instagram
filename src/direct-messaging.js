@@ -27,4 +27,17 @@ module.exports = class DirectMessaging {
     const thread2 = await this.client.entity.directThread([userId.toString()])
     await thread2.broadcastText('agora vai')
   }
+
+  async sendDm(username) {
+    const userId = await this.client.user.getIdByUsername(username)
+    const friendship = await this.client.friendship.create(userId)
+    const thread2 = await this.client.entity.directThread([userId.toString()])
+    console.log('send dm to ', username)
+    try {
+      await thread2.broadcastText('teste dm')
+    } catch (e) {
+      // https://github.com/dilame/instagram-private-api/issues/1084
+      console.error('Device#sendMessage Error', e.name, e.message)
+    }
+  }
 }
