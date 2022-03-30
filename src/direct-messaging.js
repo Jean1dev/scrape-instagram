@@ -40,4 +40,61 @@ module.exports = class DirectMessaging {
       console.error('Device#sendMessage Error', e.name, e.message)
     }
   }
+
+  async listFollowers(username) {
+    const userId = await this.client.user.getIdByUsername(username)
+    const followersFeed = await this.client.feed.accountFollowers(userId)
+
+    let followers = [];
+    let reqId = 0;
+    let limit = 600;
+    let delay = 1000;
+    do {
+      reqId += 1;
+      const items = await followersFeed.items();
+      followers = [...followers, ...items];
+
+      if (limit && limit !== -1) {
+        if (followers.length >= limit) {
+          break;
+        }
+      }
+
+      await waitInSeconds(delay);
+    } while (followersFeed.isMoreAvailable());
+
+    return followers
+  }
+
+  async listFollowing(username) {
+    const userId = await this.client.user.getIdByUsername(username)
+    const followingFeed = await this.client.feed.accountFollowing(userId)
+
+    let followers = [];
+    let reqId = 0;
+    let limit = 600;
+    let delay = 1000;
+    do {
+      reqId += 1;
+      const items = await followingFeed.items();
+      followers = [...followers, ...items];
+
+      if (limit && limit !== -1) {
+        if (followers.length >= limit) {
+          break;
+        }
+      }
+
+      await waitInSeconds(delay);
+    } while (followingFeed.isMoreAvailable());
+
+    return followers
+  }
+}
+
+
+function waitInSeconds(milliseconds) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(null), milliseconds)
+  })
 }

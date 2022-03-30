@@ -4,7 +4,7 @@ module.exports = class Authenticator {
 
   async login() {
     const ig = new IgApiClient()
-    const username = ''
+    const username = 'cheffyus'
     const password = ''
     ig.state.generateDevice(username)
 
