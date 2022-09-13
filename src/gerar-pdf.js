@@ -2,12 +2,11 @@ const PDFDocument = require('pdfkit')
 const fs = require('fs')
 const path = require('path')
 
-function gerar() {
+function gerar(filename = 'stefany.pdf') {
     const doc = new PDFDocument()
-    const filename = 'stefany.pdf'
     const imagesDir = 'images_insta'
 
-    doc.pipe(fs.createWriteStream(filename))
+    doc.pipe(fs.createWriteStream(path.resolve(__dirname, '..', 'pdf', filename)))
 
     const directoryPath = path.resolve(__dirname, '..', imagesDir)
 
@@ -52,4 +51,4 @@ function gerar() {
     })
 }
 
-gerar()
+module.exports = gerar

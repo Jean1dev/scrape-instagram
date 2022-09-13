@@ -1,3 +1,7 @@
 node_modules/
 data.json
 images_insta/
+.env
+input.json
+output-error.json
+sucesso.json
