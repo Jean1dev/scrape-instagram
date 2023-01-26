@@ -12,10 +12,10 @@ auth.login()
     console.log(`Logged in as ${currentUser.username}`)
 
     const dm = new DirectMessaging(client)
-    const followers = await dm.listFollowers('colodel_stefany_')
+    const followers = await dm.listFollowers('jeanlucafp')
     console.log('get followers')
 
-    const follows = await dm.listFollowing('colodel_stefany_')
+    const follows = await dm.listFollowing('jeanlucafp')
     console.log('get follows')
 
     evidenciarNomeEFotoQuemEuSigoENaoMeSegue(followers, follows)
@@ -63,13 +63,13 @@ function evidenciarNomeEFotoQuemEuSigoENaoMeSegue(followers, follows) {
     profilePicUrl: item.profile_pic_url
   }))
 
-  structFollows.forEach(user => {
+  for (const user of  structFollows) {
     const profile = structFollowers.find(follow => follow.username === user.username)
 
     if (!profile) {
       evidencias.push(user)
     }
-  })
+  }
 
   fs.writeFileSync('data.json', JSON.stringify(evidencias))
   gerarPDFdata()

@@ -47,7 +47,7 @@ module.exports = class DirectMessaging {
 
     let followers = [];
     let reqId = 0;
-    let limit = 600;
+    let limit = 1000;
     let delay = 1000;
     do {
       reqId += 1;
@@ -72,7 +72,7 @@ module.exports = class DirectMessaging {
 
     let followers = [];
     let reqId = 0;
-    let limit = 600;
+    let limit = 1000;
     let delay = 1000;
     do {
       reqId += 1;
