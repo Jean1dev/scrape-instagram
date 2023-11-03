@@ -47,8 +47,8 @@ module.exports = class DirectMessaging {
 
     let followers = [];
     let reqId = 0;
-    let limit = 1000;
-    let delay = 1000;
+    let limit = 900;
+    let delay = 2000;
     do {
       reqId += 1;
       const items = await followersFeed.items();
@@ -61,6 +61,17 @@ module.exports = class DirectMessaging {
       }
 
       await waitInSeconds(delay);
+      console.log(delay)
+      await waitInSeconds(delay);
+      if (delay == 2000) {
+        delay = 4000
+      } else if (delay == 4000) {
+        delay = 1000
+      } else if (delay == 1000) {
+        delay = 5000
+      } else if (delay == 5000) {
+        delay = 2000
+      }
     } while (followersFeed.isMoreAvailable());
 
     return followers
@@ -72,8 +83,8 @@ module.exports = class DirectMessaging {
 
     let followers = [];
     let reqId = 0;
-    let limit = 1000;
-    let delay = 1000;
+    let limit = 900;
+    let delay = 2000;
     do {
       reqId += 1;
       const items = await followingFeed.items();
@@ -85,7 +96,17 @@ module.exports = class DirectMessaging {
         }
       }
 
+      console.log(delay)
       await waitInSeconds(delay);
+      if (delay == 2000) {
+        delay = 4000
+      } else if (delay == 4000) {
+        delay = 1000
+      } else if (delay == 1000) {
+        delay = 5000
+      } else if (delay == 5000) {
+        delay = 2000
+      }
     } while (followingFeed.isMoreAvailable());
 
     return followers
